@@ -1,0 +1,234 @@
+{
+  "gods": {
+    "ade": {
+      "name": "Ade",
+      "vibe": "Dark / Hype / Underground",
+      "style_reference": "@dnieccio",
+      "outfit": {
+        "top": {
+          "name": "Broken Planet 'Into the Abyss' Hoodie",
+          "image": "img/fits/ade top.jpg"
+        },
+        "bottom": {
+          "name": "Reaven 'Studio' Cargo Pants Black",
+          "image": "img/fits/ade bottom.jpg"
+        },
+        "accessory": {
+          "name": "Craftd London Ouroboros Snake Pendant",
+          "image": "img/fits/ade accessory.webp"
+        },
+        "shoes": {
+          "name": "Nike Air Jordan 4 Black Cat",
+          "image": "img/fits/ade shoes.jpg"
+        }
+      }
+    },
+    "zeus": {
+      "name": "Zeus",
+      "vibe": "Vintage / Boss / Stormy",
+      "style_reference": "@nandax",
+      "outfit": {
+        "top": {
+          "name": "Reaven 'Thunder' Washed black hoodie ",
+          "image": "img/fits/zeus top.webp"
+        },
+        "bottom": {
+          "name": "Bershka Baggy Tailored Pants Grey",
+          "image": "img/fits/zeus bottom.webp"
+        },
+        "accessory": {
+          "name": "Craftd London Wisdom Pendant Gold",
+          "image": "img/fits/zeus accessory.webp"
+        },
+        "shoes": {
+          "name": "New Balance 9060 Sea Salt",
+          "image": "img/fits/zeus shoes.jpg"
+        }
+      }
+    },
+    "poseidone": {
+      "name": "Poseidone",
+      "vibe": "Cozy / Wavy / Deep Blue",
+      "style_reference": "@nandax",
+      "outfit": {
+        "top": {
+          "name": "Reaven longsleeve white",
+          "image": "img/fits/poseidone top2.webp"
+        },
+        "bottom": {
+          "name": "Reaven 'Shibuya' Baggy Jeans Blue",
+          "image": "img/fits/poseidone bottom.webp"
+        },
+        "accessory": {
+          "name": "Craftd London Sapphire Stone Pendant",
+          "image": "img/fits/poseidone accessory.webp"
+        },
+        "shoes": {
+          "name": "Nike Air Jordan 4 SB 'Navy Blue'",
+          "image": "img/fits/poseidone shoes.jpg"
+        }
+      }
+    },
+    "apollo": {
+      "name": "Apollo",
+      "vibe": "Clean / Aesthetic / Summer",
+      "style_reference": "@jayyals",
+      "outfit": {
+        "top": {
+          "name": "Mertra 'Four Characters' Boxy Tee",
+          "image": "img/fits/apollo top.jpg"
+        },
+        "bottom": {
+          "name": "Bershka Light Wash Denim Jorts",
+          "image": "img/fits/apollo bottom.jpg"
+        },
+        "accessory": {
+          "name": "Craftd London Sun Pendant Gold",
+          "image": "img/fits/apollo accessory.webp"
+        },
+        "shoes": {
+          "name": "Adidas Campus 00s 'Crystal White'",
+          "image": "img/fits/apollo shoes.webp"
+        }
+      }
+    },
+    "ares": {
+      "name": "Ares",
+      "vibe": "Tactical / Utility / Aggressive",
+      "style_reference": "@hellacreps",
+      "outfit": {
+        "top": {
+          "name": "Vintage Biker Leather Jacket",
+          "image": "img/fits/ares top.jpg"
+        },
+        "bottom": {
+          "name": "Reaven Baggy Cargo Pants Black",
+          "image": "img/fits/ares bottom.jpg"
+        },
+        "accessory": {
+          "name": "Craftd London Guadalupe Ring Silver",
+          "image": "img/fits/ares accessory.webp"
+        },
+        "shoes": {
+          "name": "Louis Vuitton x Timberland 6-Inch Boot Black",
+          "image": "img/fits/ares shoes.webp"
+        }
+      }
+    },
+    "artemide": {
+      "name": "Artemide",
+      "vibe": "Stealth / Tech / Forest",
+      "style_reference": "@kwadwo.7",
+      "outfit": {
+        "top": {
+          "name": "Bershka Longsleeve Top White",
+          "image": "img/fits/artemide top2.jpg"
+        },
+        "bottom": {
+          "name": "Bershka Jogger Barrel Blu Navy",
+          "image": "img/fits/artemide bottom.jpg"
+        },
+        "accessory": {
+          "name": "Craftd London Arrow Gold Pendant",
+          "image": "img/fits/artemide accessory.webp"
+        },
+        "shoes": {
+          "name": "Nike Air Jordan 4 Denim",
+          "image": "img/fits/artemide shoes.jpg"
+        }
+      }
+    },
+    "afrodite": {
+      "name": "Afrodite",
+      "vibe": "Soft / Premium / Textured",
+      "style_reference": "@jayyals",
+      "outfit": {
+        "top": {
+          "name": "Drmersclub Cream Oversize Knitwear",
+          "image": "img/fits/afrodite top.webp"
+        },
+        "bottom": {
+          "name": "Bershka Wide-leg Corduroy Pants",
+          "image": "img/fits/afrodite bottom.jpg"
+        },
+        "accessory": {
+          "name": "Craftd London Pearl Necklace",
+          "image": "img/fits/afrodite accessory.webp"
+        },
+        "shoes": {
+          "name": "Nike Dunk Low 'Sand Drift'",
+          "image": "img/fits/afrodite shoes.webp"
+        }
+      }
+    },
+    "dioniso": {
+      "name": "Dioniso",
+      "vibe": "Bold / Party / Eclectic",
+      "style_reference": "@dnieccio",
+      "outfit": {
+        "top": {
+          "name": "Mertra Patterned Resort Shirt",
+          "image": "img/fits/dioniso top.jpg"
+        },
+        "bottom": {
+          "name": "Reaven Baggy Essence Denim Jeans",
+          "image": "img/fits/dioniso bottom.jpg"
+        },
+        "accessory": {
+          "name": "Craftd London St Christopher Pendant Silver",
+          "image": "img/fits/dioniso accessory.webp"
+        },
+        "shoes": {
+          "name": "Custom Nike Air Force 1 Low",
+          "image": "img/fits/dioniso shoes.webp"
+        }
+      }
+    },
+    "ermes": {
+      "name": "Ermes",
+      "vibe": "Gorpcore / Fast / Dynamic",
+      "style_reference": "@kwadwo.7",
+      "outfit": {
+        "top": {
+          "name": "5mc2.lab Technical Windshell Jacket",
+          "image": "img/fits/ermes top.webp"
+        },
+        "bottom": {
+          "name": "Bershka blu navy joggers",
+          "image": "img/fits/ermes bottom.jpg"
+        },
+        "accessory": {
+          "name": "Oakley Style Speed Sunglasses",
+          "image": "img/fits/ermes accessory.jpg"
+        },
+        "shoes": {
+          "name": "Asics Gel-NYC 'Oyster Grey'",
+          "image": "img/fits/ermes shoes.jpg"
+        }
+      }
+    },
+    "efesto": {
+      "name": "Efesto",
+      "vibe": "Workwear / Industrial / Raw",
+      "style_reference": "@hellacreps",
+      "outfit": {
+        "top": {
+          "name": "Reaven Vintage jacket",
+          "image": "img/fits/effesto top.webp"
+        },
+        "bottom": {
+          "name": "5mc2.lab Distressed Carpenter Pants",
+          "image": "img/fits/efesto bottom.jpg"
+        },
+        "accessory": {
+          "name": "Heavy Industrial Silver Rings Set",
+          "image": "img/fits/efesto accessory.webp"
+        },
+        "shoes": {
+          "name": "Martinsgollin Custom Timberland Boots",
+          "image": "img/fits/efesto shoes.webp"
+        }
+      }
+    }
+  }
+}

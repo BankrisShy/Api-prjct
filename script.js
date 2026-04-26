@@ -1,0 +1,66 @@
+async function generateOutfit() {
+  const selectedGod = document.getElementById("godSelect").value;
+  const response = await fetch("data.json");
+  const data = await response.json();
+  const godData = data.gods[selectedGod];
+
+  // Mostra UI base
+  document.getElementById("result").style.display = "block";
+  document.getElementById("godName").innerText = godData.name;
+
+  // === NUOVA LOGICA PER MOSTRARE LE IMMAGINI ===
+  // ... dentro la funzione generateOutfit(), dopo aver mostrato godName e vibe ...
+
+  const itemsContainer = document.getElementById("items");
+  itemsContainer.innerHTML = ""; // Svuota i vecchi risultati
+
+  // Array ordinato come nel tuo data.json
+  const keys = ["top", "bottom", "accessory", "shoes"];
+
+  keys.forEach((key) => {
+    const itemData = godData.outfit[key];
+
+    // Creiamo il box principale
+    const itemBox = document.createElement("div");
+    itemBox.className = "item-box";
+
+    // Se c'è l'immagine, la aggiungiamo prima del testo
+    if (itemData.image && itemData.image !== "") {
+      const img = document.createElement("img");
+      img.src = itemData.image;
+      img.alt = itemData.name;
+      img.className = "item-img";
+      itemBox.appendChild(img);
+    }
+
+    // Aggiungiamo le info del testo
+    const info = document.createElement("div");
+    info.className = "item-info";
+    info.innerHTML = `<b>${key.toUpperCase()}</b> ${itemData.name}`;
+
+    itemBox.appendChild(info);
+    itemsContainer.appendChild(itemBox);
+  });
+
+  const aiAdviceElement = document.getElementById("aiAdvice");
+  aiAdviceElement.innerText = "Chiedendo consiglio allo stylist...";
+
+  try {
+    // CHIAMATA AL TUO SERVER NODE
+    const aiResponse = await fetch("http://localhost:8000/api/outfit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        god: godData.name,
+        outfitDetails: godData.outfit,
+      }),
+    });
+
+    const result = await aiResponse.json();
+    aiAdviceElement.innerHTML = result.text;
+  } catch (error) {
+    aiAdviceElement.innerText =
+      "Il server Node non risponde. Assicurati di averlo avviato!";
+  }
+  
+}

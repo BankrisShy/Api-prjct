@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mythology Fits</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="img/favicon/site.webmanifest" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mythology Fits</h1>
+
+      <div class="controls">
+        <select id="godSelect">
+          <option value="ade">Ade</option>
+          <option value="zeus">Zeus</option>
+          <option value="poseidone">Poseidone</option>
+          <option value="apollo">Apollo</option>
+          <option value="ares">Ares</option>
+          <option value="ermes">Ermes</option>
+          <option value="afrodite">Afrodite</option>
+          <option value="efesto">Efesto</option>
+          <option value="dioniso">Dioniso</option>
+          <option value="artemide">Artemide</option>
+        </select>
+        <button onclick="generateOutfit()">Get the Fit</button>
+      </div>
+
+      <div id="result" style="display: none">
+        <h2 id="godName"></h2>
+        <p id="vibe"></p>
+        <div id="items" class="item-grid"></div>
+        <div class="ai-box">
+          <p id="aiAdvice"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

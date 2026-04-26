@@ -1,0 +1,195 @@
+/* 1. Importiamo Cinzel per i titoli (stile marmo scolpito) e Inter per il resto */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;700;900&display=swap');
+
+:root {
+    --black: #0a0a0a;
+    --grey: #1a1a1a;
+    --accent: #ffffff;
+    --text-dim: #a0a0a0;
+    --gold: #d4af37; /* Un tocco di oro opzionale per i dettagli divini */
+}
+
+body {
+    background-color: var(--black);
+    color: var(--accent);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    /* Cursore personalizzato di default */
+    cursor: default;
+}
+
+h1 {
+    font-family: 'Cinzel', serif; /* Font mitologico */
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Aumentato per stile luxury */
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    /* Effetto sfumatura metallica */
+    background: linear-gradient(to bottom, #fff 40%, #555 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Container di selezione */
+/* Container di selezione centrato */
+.controls {
+    background: var(--grey);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center; /* Centra il contenuto orizzontalmente */
+    align-items: center;     /* Allinea verticalmente (in caso di altezze diverse) */
+    gap: 20px;               /* Spazio tra il menu e il bottone */
+    margin-left: 50px;
+    margin-bottom: 50px;
+    width: 100%;             /* Occupa tutta la larghezza disponibile */
+    max-width: 600px;        /* Ma non superare la larghezza della card sotto */
+    box-sizing: border-box;  /* Evita che il padding sballi la larghezza */
+}
+
+/* Un piccolo tocco per rendere il select più largo */
+select {
+    background: #000;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px 25px;      /* Più spazio interno */
+    font-size: 1rem;
+    border-radius: 5px;
+    min-width: 150px;        /* Evita che sia troppo piccolo */
+    cursor: crosshair;
+}
+
+button {
+    background: var(--accent);
+    color: var(--black);
+    border: none;
+    padding: 10px 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: crosshair;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: #ccc;
+    letter-spacing: 3px; /* Effetto espansione al click */
+}
+
+/* Card dell'Outfit */
+#result {
+    width: 100%;
+    max-width: 600px;
+    background: linear-gradient(145deg, #111, #050505);
+    border: 1px solid #222;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+#godName {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    margin: 0;
+    color: var(--accent);
+    text-align: center;
+}
+
+#vibe {
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Container della lista capi */
+.item-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* Singolo blocco Capo (Box) */
+.item-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 10px; /* Ridotto per far risaltare l'immagine */
+    width: 100%;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.item-box:hover {
+    transform: scale(1.02);
+    border-color: #555;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Stile dell'immagine */
+.item-img {
+    width: 100%;
+    height: 400px; /* Fissiamo un'altezza uguale per tutti i box */
+    object-fit: contain; /* L'immagine non viene tagliata, si adatta allo spazio */
+    background-color: #111; /* Sfondo scuro per riempire i bordi se l'immagine è stretta */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.item-box:hover .item-img {
+    filter: grayscale(0%);
+}
+
+/* Stile del testo sotto l'immagine */
+.item-info {
+    text-align: left;
+    padding: 10px 15px;
+}
+
+.item-info b {
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+#aiAdvice {
+    margin-top: 40px;
+    padding: 20px;
+    background: #ffffff05;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    font-style: italic;
+    color: #bbb;
+    line-height: 1.8;
+    text-align: center;
+    position: relative;
+}
+
+/* Decorazione finale: virgolette stilizzate per l'IA */
+#aiAdvice::before {
+    content: "“";
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    opacity: 0.2;
+}
