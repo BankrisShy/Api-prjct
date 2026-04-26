@@ -47,7 +47,7 @@ h1 {
     justify-content: center; /* Centra il contenuto orizzontalmente */
     align-items: center;     /* Allinea verticalmente (in caso di altezze diverse) */
     gap: 20px;               /* Spazio tra il menu e il bottone */
-    margin-left: 45px;
+    margin-left: 40px;
     margin-bottom: 50px;
     width: 100%;             /* Occupa tutta la larghezza disponibile */
     max-width: 600px;        /* Ma non superare la larghezza della card sotto */
