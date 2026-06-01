@@ -103,16 +103,20 @@ function setupPlaylist() {
   music.src = playlist[currentTrackIndex];
 
   // Evento automatico: quando la canzone FINISCE, passa alla prossima
-  music.onended = function() {
+ music.onended = function() {
     let nextTrackIndex;
-    // Pesca un numero a caso finché non è diverso da quello appena riprodotto
+    
+    // Questo ciclo "do-while" serve a evitare che venga pescata 
+    // due volte di fila la stessa canzone appena finita
     do {
       nextTrackIndex = Math.floor(Math.random() * playlist.length);
     } while (nextTrackIndex === currentTrackIndex && playlist.length > 1);
 
-    currentTrackIndex = nextTrackIndex;
-    music.src = playlist[currentTrackIndex]; // Cambia la sorgente
-    music.play().catch(err => console.log("Errore cambio traccia automatico:", err));
-    console.log(`🎵 Ora in riproduzione: ${playlist[currentTrackIndex]}`);
+    currentTrackIndex = nextTrackIndex; // Aggiorna l'indice corrente
+    music.src = playlist[currentTrackIndex]; // Cambia file MP3
+    
+    // Fai partire la nuova canzone
+    music.play().catch(err => console.log("Errore riproduzione traccia casuale:", err));
+    console.log(`🎲 Shuffle: Ora in riproduzione -> ${playlist[currentTrackIndex]}`);
   };
 }
