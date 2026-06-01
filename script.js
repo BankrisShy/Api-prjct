@@ -115,22 +115,38 @@ function setupPlaylist() {
     music.play().catch(err => console.log("Errore riproduzione casuale:", err));
   };
 
-  // 🔄 AGGIORNAMENTO DINAMICO DELLA BARRA E DEL TEMPO
+  // ⏱️ Mostra la durata totale corretta non appena il file viene agganciato
+  music.onloadedmetadata = function() {
+    updatePlayerTime(music.currentTime, music.duration);
+  };
+
+  // 🔄 AGGIORNAMENTO DINAMICO DELLA BARRA E DEL TEMPO MENTRE SUONA
   music.ontimeupdate = function() {
     if (music.duration) {
-      // 1. Calcola la percentuale di avanzamento
+      // Calcola la percentuale di avanzamento della barra
       const percentage = (music.currentTime / music.duration) * 100;
-      document.getElementById("playerProgress").style.width = percentage + "%";
+      const progressBar = document.getElementById("playerProgress");
+      if (progressBar) progressBar.style.width = percentage + "%";
 
-      // 2. Formatta il tempo corrente e totale (es. 1:23)
-      const currentMin = Math.floor(music.currentTime / 60);
-      const currentSec = Math.floor(music.currentTime % 60).toString().padStart(2, '0');
-      const durationMin = Math.floor(music.duration / 60);
-      const durationSec = Math.floor(music.duration % 60).toString().padStart(2, '0');
-
-      document.getElementById("playerTime").innerText = `${currentMin}:${currentSec} / ${durationMin}:${durationSec}`;
+      // Aggiorna il testo del timer
+      updatePlayerTime(music.currentTime, music.duration);
     }
   };
+}
+
+// Funzione interna per formattare i numeri del timer (es. 0:05 / 2:42)
+function updatePlayerTime(current, duration) {
+  const currentMin = Math.floor(current / 60);
+  const currentSec = Math.floor(current % 60).toString().padStart(2, '0');
+  
+  // Se duration non è ancora pronta, mettiamo 0:00 provvisorio
+  const durMin = duration ? Math.floor(duration / 60) : 0;
+  const durSec = duration ? Math.floor(duration % 60).toString().padStart(2, '0') : "00";
+
+  const timeElement = document.getElementById("playerTime");
+  if (timeElement) {
+    timeElement.innerText = `${currentMin}:${currentSec} / ${durMin}:${durSec}`;
+  }
 }
 
 // Funzione di supporto per cambiare traccia e pulire il titolo dal percorso del file
@@ -143,6 +159,9 @@ function changeTrack(index) {
   const fileName = fullPath.substring(fullPath.lastIndexOf('/') + 1);
   const cleanTitle = fileName.replace('.mp3', '');
 
-  // Aggiorna il box HTML
-  document.getElementById("playerTitle").innerText = cleanTitle;
+  // Aggiorna il titolo nel widget HTML
+  const titleElement = document.getElementById("playerTitle");
+  if (titleElement) {
+    titleElement.innerText = cleanTitle;
+  }
 }
