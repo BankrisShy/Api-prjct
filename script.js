@@ -99,24 +99,50 @@ let isPlaylistInitialized = false; // Serve per non resettare la canzone a ogni 
 function setupPlaylist() {
   const music = document.getElementById("bgMusic");
 
-  // Carichiamo la prima traccia
-  music.src = playlist[currentTrackIndex];
+  // Sceglie la prima canzone a caso
+  currentTrackIndex = Math.floor(Math.random() * playlist.length);
+  changeTrack(currentTrackIndex);
 
-  // Evento automatico: quando la canzone FINISCE, passa alla prossima
- music.onended = function() {
+  // Quando il brano finisce, ne seleziona un altro senza ripetere lo stesso
+  music.onended = function() {
     let nextTrackIndex;
-    
-    // Questo ciclo "do-while" serve a evitare che venga pescata 
-    // due volte di fila la stessa canzone appena finita
     do {
       nextTrackIndex = Math.floor(Math.random() * playlist.length);
     } while (nextTrackIndex === currentTrackIndex && playlist.length > 1);
 
-    currentTrackIndex = nextTrackIndex; // Aggiorna l'indice corrente
-    music.src = playlist[currentTrackIndex]; // Cambia file MP3
-    
-    // Fai partire la nuova canzone
-    music.play().catch(err => console.log("Errore riproduzione traccia casuale:", err));
-    console.log(`🎲 Shuffle: Ora in riproduzione -> ${playlist[currentTrackIndex]}`);
+    currentTrackIndex = nextTrackIndex; 
+    changeTrack(currentTrackIndex);
+    music.play().catch(err => console.log("Errore riproduzione casuale:", err));
   };
+
+  // 🔄 AGGIORNAMENTO DINAMICO DELLA BARRA E DEL TEMPO
+  music.ontimeupdate = function() {
+    if (music.duration) {
+      // 1. Calcola la percentuale di avanzamento
+      const percentage = (music.currentTime / music.duration) * 100;
+      document.getElementById("playerProgress").style.width = percentage + "%";
+
+      // 2. Formatta il tempo corrente e totale (es. 1:23)
+      const currentMin = Math.floor(music.currentTime / 60);
+      const currentSec = Math.floor(music.currentTime % 60).toString().padStart(2, '0');
+      const durationMin = Math.floor(music.duration / 60);
+      const durationSec = Math.floor(music.duration % 60).toString().padStart(2, '0');
+
+      document.getElementById("playerTime").innerText = `${currentMin}:${currentSec} / ${durationMin}:${durationSec}`;
+    }
+  };
+}
+
+// Funzione di supporto per cambiare traccia e pulire il titolo dal percorso del file
+function changeTrack(index) {
+  const music = document.getElementById("bgMusic");
+  music.src = playlist[index];
+
+  // Prende il nome del file (es: "audio/No Bad Grades.mp3") e isola solo il titolo "No Bad Grades"
+  const fullPath = playlist[index];
+  const fileName = fullPath.substring(fullPath.lastIndexOf('/') + 1);
+  const cleanTitle = fileName.replace('.mp3', '');
+
+  // Aggiorna il box HTML
+  document.getElementById("playerTitle").innerText = cleanTitle;
 }
