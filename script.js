@@ -46,7 +46,7 @@ async function generateOutfit() {
   try {
     // ⚠️ CAMBIATO: Ora punta al server live su Render invece che a localhost
     // Sostituisci l'URL qui sotto con quello reale che ti dà Render!
-    const renderUrl = "https://IL_TUO_LINK_DI_RENDER.onrender.com/api/outfit";
+    const renderUrl = "https://mythology-fits.onrender.com";
 
     const aiResponse = await fetch(renderUrl, {
       method: "POST",
