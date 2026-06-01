@@ -1,4 +1,21 @@
 async function generateOutfit() {
+  const music = document.getElementById("bgMusic");
+
+  // Se è la prima volta che l'utente clicca, configuriamo e facciamo partire la playlist
+  if (!isPlaylistInitialized) {
+    setupPlaylist();
+    isPlaylistInitialized = true; // Impedisce di far ripartire la canzone da capo al prossimo click
+    
+    music.play().catch(error => {
+       console.log("Riproduzione bloccata dal browser fino al click effettivo:", error);
+    });
+  } else {
+    // Se la playlist era già partita ma magari era in pausa, riprendi il play
+    if (music.paused) {
+      music.play().catch(() => {});
+    }
+  }
+
   const selectedGod = document.getElementById("godSelect").value;
   const response = await fetch("data.json");
   const data = await response.json();
@@ -67,4 +84,35 @@ async function generateOutfit() {
     aiAdviceElement.innerText =
       "Lo stylist si sta prendendo una pausa (il server si sta svegliando o è offline). Riprova tra un minuto!";
   }
+}
+// 1. Definiamo la lista delle canzoni (i percorsi relativi)
+const playlist = [
+  "./audio/track1.mp3",
+  "./audio/track2.mp3",
+  "./audio/track3.mp3"
+];
+
+let currentTrackIndex = 0; // Traccia di partenza (la prima)
+let isPlaylistInitialized = false; // Serve per non resettare la canzone a ogni click
+
+// 2. Funzione per configurare il lettore e gestire il passaggio automatico
+function setupPlaylist() {
+  const music = document.getElementById("bgMusic");
+
+  // Carichiamo la prima traccia
+  music.src = playlist[currentTrackIndex];
+
+  // Evento automatico: quando la canzone FINISCE, passa alla prossima
+  music.onended = function() {
+    let nextTrackIndex;
+    // Pesca un numero a caso finché non è diverso da quello appena riprodotto
+    do {
+      nextTrackIndex = Math.floor(Math.random() * playlist.length);
+    } while (nextTrackIndex === currentTrackIndex && playlist.length > 1);
+
+    currentTrackIndex = nextTrackIndex;
+    music.src = playlist[currentTrackIndex]; // Cambia la sorgente
+    music.play().catch(err => console.log("Errore cambio traccia automatico:", err));
+    console.log(`🎵 Ora in riproduzione: ${playlist[currentTrackIndex]}`);
+  };
 }
