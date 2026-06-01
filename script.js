@@ -8,9 +8,7 @@ async function generateOutfit() {
   document.getElementById("result").style.display = "block";
   document.getElementById("godName").innerText = godData.name;
 
-  // === NUOVA LOGICA PER MOSTRARE LE IMMAGINI ===
-  // ... dentro la funzione generateOutfit(), dopo aver mostrato godName e vibe ...
-
+  // === LOGICA PER MOSTRARE LE IMMAGINI ===
   const itemsContainer = document.getElementById("items");
   itemsContainer.innerHTML = ""; // Svuota i vecchi risultati
 
@@ -46,8 +44,11 @@ async function generateOutfit() {
   aiAdviceElement.innerText = "Chiedendo consiglio allo stylist...";
 
   try {
-    // CHIAMATA AL TUO SERVER NODE
-    const aiResponse = await fetch("http://localhost:8000/api/outfit", {
+    // ⚠️ CAMBIATO: Ora punta al server live su Render invece che a localhost
+    // Sostituisci l'URL qui sotto con quello reale che ti dà Render!
+    const renderUrl = "https://IL_TUO_LINK_DI_RENDER.onrender.com/api/outfit";
+
+    const aiResponse = await fetch(renderUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -57,10 +58,13 @@ async function generateOutfit() {
     });
 
     const result = await aiResponse.json();
-    aiAdviceElement.innerHTML = result.text;
+    
+    // 💡 MIGLIORATO: Usa innerHTML per renderizzare eventuali link formattati dall'IA
+    aiAdviceElement.innerHTML = result.text; 
+    
   } catch (error) {
+    console.error("Errore di connessione al backend:", error);
     aiAdviceElement.innerText =
-      "Il server Node non risponde. Assicurati di averlo avviato!";
+      "Lo stylist si sta prendendo una pausa (il server si sta svegliando o è offline). Riprova tra un minuto!";
   }
-  
 }
