@@ -193,3 +193,50 @@ button:hover {
     left: 10px;
     opacity: 0.2;
 }
+#mini-player {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 220px;
+  background: rgba(0, 0, 0, 0.85); /* Sfondo scuro semi-trasparente stile streetwear */
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 9999; /* Rimane sopra a qualsiasi altro elemento */
+  border: 1px solid #333;
+}
+
+.player-track-title {
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Se il titolo è lungo, aggiunge i tre puntini (...) */
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.player-progress-container {
+  width: 100%;
+  height: 5px;
+  background: #333;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.player-progress-bar {
+  width: 0%; /* Parte da zero e si allunga con JavaScript */
+  height: 100%;
+  background: #fff; /* Barra bianca minimale */
+  transition: width 0.1s linear;
+}
+
+.player-time {
+  font-size: 10px;
+  color: #aaa;
+  text-align: right;
+}
