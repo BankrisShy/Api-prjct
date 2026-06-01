@@ -87,9 +87,9 @@ async function generateOutfit() {
 }
 // 1. Definiamo la lista delle canzoni (i percorsi relativi)
 const playlist = [
-  "./audio/track1.mp3",
-  "./audio/track2.mp3",
-  "./audio/track3.mp3"
+  "./audio/INTRO (La Bella Vita) - Instrumental.mp3",
+  "./audio/No Bad Grades.mp3",
+  "./audio/Wagwan - Central Cee (Remix) @prod.kx1.mp3"
 ];
 
 let currentTrackIndex = 0; // Traccia di partenza (la prima)
