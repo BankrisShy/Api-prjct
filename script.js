@@ -87,7 +87,10 @@ async function generateOutfit() {
 const playlist = [
   "./audio/INTRO (La Bella Vita) - Instrumental.mp3",
   "./audio/No Bad Grades.mp3",
-  "./audio/Wagwan - Central Cee (Remix) @prod.kx1.mp3"
+  "./audio/Wagwan - Central Cee (Remix) @prod.kx1.mp3",
+  "audio/Asake & Tiakola - BADMAN GANGSTA.mp3",
+  "audio/CENTRAL CEE - NOW WE'RE STRANGERS (LYRIC VIDEO).mp3",
+  "audio/Ms. Jackson.mp3"
 ];
 
 let currentTrackIndex = 0; // Traccia di partenza (la prima)
