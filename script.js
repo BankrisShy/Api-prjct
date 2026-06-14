@@ -21,8 +21,17 @@ async function generateOutfit() {
   const data = await response.json();
   const godData = data.gods[selectedGod];
 
-  // Mostra UI base
-  document.getElementById("result").style.display = "block";
+  // === ANIMAZIONE FLUIDA AL CLICK (Sistemato Qui) ===
+  const resultDiv = document.getElementById("result");
+  resultDiv.style.display = "block";
+  
+  // Rimuove la classe dell'animazione se era già presente dal click precedente
+  resultDiv.classList.remove('fade-in-effect');
+  // Trucco magico: forza il browser a ricalcolare il layout (re-flow) per far ripartire l'effetto
+  void resultDiv.offsetWidth; 
+  // Aggiunge la classe che fa sfumare la card dall'alto verso il basso
+  resultDiv.classList.add('fade-in-effect');
+
   document.getElementById("godName").innerText = godData.name;
 
   // === LOGICA PER MOSTRARE LE IMMAGINI ===
@@ -62,7 +71,6 @@ async function generateOutfit() {
 
   try {
     // ⚠️ CAMBIATO: Ora punta al server live su Render invece che a localhost
-    // Sostituisci l'URL qui sotto con quello reale che ti dà Render!
     const aiResponse = await fetch("https://mythology-fits.onrender.com/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -83,6 +91,7 @@ async function generateOutfit() {
       "Lo stylist si sta prendendo una pausa (il server si sta svegliando o è offline). Riprova tra un minuto!";
   }
 }
+
 // 1. Definiamo la lista delle canzoni (i percorsi relativi)
 const playlist = [
   "./audio/INTRO (La Bella Vita) - Instrumental.mp3",
@@ -155,7 +164,7 @@ function changeTrack(index) {
   const music = document.getElementById("bgMusic");
   music.src = playlist[index];
 
-  // Prende il nome del file (es: "audio/No Bad Grades.mp3") e isola solo il titolo "No Bad Grades"
+  // Prende il nome del file e isola solo il titolo
   const fullPath = playlist[index];
   const fileName = fullPath.substring(fullPath.lastIndexOf('/') + 1);
   const cleanTitle = fileName.replace('.mp3', '');
