@@ -47,7 +47,6 @@ h1 {
     justify-content: center; /* Centra il contenuto orizzontalmente */
     align-items: center;     /* Allinea verticalmente (in caso di altezze diverse) */
     gap: 20px;               /* Spazio tra il menu e il bottone */
-    margin-left: 40px;
     margin-bottom: 50px;
     width: 100%;             /* Occupa tutta la larghezza disponibile */
     max-width: 600px;        /* Ma non superare la larghezza della card sotto */
@@ -144,6 +143,7 @@ button:hover {
 .item-img {
     width: 100%;
     height: 400px; /* Fissiamo un'altezza uguale per tutti i box */
+    max-height: 50vh; /* Sui telefoni non supererà mai metà dell'altezza dello schermo */
     object-fit: contain; /* L'immagine non viene tagliata, si adatta allo spazio */
     background-color: #111; /* Sfondo scuro per riempire i bordi se l'immagine è stretta */
     border-radius: 10px;
@@ -239,4 +239,70 @@ button:hover {
   font-size: 10px;
   color: #aaa;
   text-align: right;
+}
+/* ==========================================
+   STILI PER DISPOSITIVI MOBILI (SMARTPHONE)
+   ========================================== */
+@media (max-width: 768px) {
+    
+    body {
+        padding: 20px 15px; /* Riduciamo il padding per avere più spazio laterale */
+    }
+
+    /* Rimpiccioliamo il titolo principale per non farlo andare a capo male */
+    h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    /* I controlli (Select e Bottone) si mettono in verticale per stare comodi */
+    .controls {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    select, button {
+        width: 100%; /* Occupano tutta la larghezza del contenitore */
+        box-sizing: border-box;
+        padding: 12px; /* Più facili da cliccare con le dita */
+        font-size: 1rem;
+    }
+
+    /* Card del risultato */
+    #result {
+        padding: 20px; /* Meno spazio interno per lasciare spazio ai contenuti */
+        border-radius: 15px;
+    }
+
+    #godName {
+        font-size: 2.2rem;
+    }
+
+    #vibe {
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    /* Ottimizzazione del Mini Player per Mobile */
+    /* Lo spostiamo in basso fisso così non copre il titolo del sito */
+    #mini-player {
+        top: auto;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0; /* Rimosso l'arrotondamento per farlo combaciare col fondo */
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.95); /* Leggermente più opaco sul telefono */
+        padding: 10px 20px;
+    }
+    
+    /* Spazio extra in fondo al body per evitare che il player copra i contenuti finali */
+    body {
+        padding-bottom: 90px; 
+    }
 }
