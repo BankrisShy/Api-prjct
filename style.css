@@ -67,6 +67,10 @@ select {
     border-radius: 5px;
     min-width: 150px;        
     cursor: crosshair;
+    -webkit-appearance: none;  /* Rimuove lo stile di default di Apple/Google */
+    -moz-appearance: none;
+    appearance: none;
+    /* Avendo rimosso la freccetta di default, puoi rimetterne una minimale usando un'immagine di sfondo o lasciarlo così, che fa molto techno-minimal */
 }
 
 button {
@@ -247,6 +251,21 @@ button:hover {
     color: #aaa;
     text-align: right;
 }
+/* --- ANIMAZIONE FADE IN --- */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.fade-in-effect {
+    animation: fadeIn 0.6s ease forwards;
+}
 
 /* ==========================================================================
    3. STILI PER SMARTPHONE (MEDIA QUERY COMPLETA E CORRETTA)
@@ -290,6 +309,7 @@ button:hover {
         max-width: 100%;
         border-radius: 12px;
     }
+   
 
     #godName {
         font-size: 2.2rem !important;
