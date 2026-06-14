@@ -1,4 +1,6 @@
-/* 1. Importiamo Cinzel per i titoli (stile marmo scolpito) e Inter per il resto */
+/* ==========================================================================
+   1. IMPORTAZIONI E VARIABILI GLOBALI
+   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;700;900&display=swap');
 
 :root {
@@ -6,9 +8,17 @@
     --grey: #1a1a1a;
     --accent: #ffffff;
     --text-dim: #a0a0a0;
-    --gold: #d4af37; /* Un tocco di oro opzionale per i dettagli divini */
+    --gold: #d4af37; 
 }
 
+/* Reset Box-Sizing globale utile sia per Desktop che per Mobile */
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. STILI DESKTOP (DEFAULT)
+   ========================================================================== */
 body {
     background-color: var(--black);
     color: var(--accent);
@@ -18,50 +28,44 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
-    /* Cursore personalizzato di default */
     cursor: default;
 }
 
 h1 {
-    font-family: 'Cinzel', serif; /* Font mitologico */
+    font-family: 'Cinzel', serif; 
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 4px; /* Aumentato per stile luxury */
+    letter-spacing: 4px; 
     font-size: 3.5rem;
     margin-bottom: 30px;
     text-align: center;
-    /* Effetto sfumatura metallica */
     background: linear-gradient(to bottom, #fff 40%, #555 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Container di selezione */
-/* Container di selezione centrato */
 .controls {
     background: var(--grey);
     padding: 25px;
     border-radius: 12px;
     border: 1px solid #333;
     display: flex;
-    justify-content: center; /* Centra il contenuto orizzontalmente */
-    align-items: center;     /* Allinea verticalmente (in caso di altezze diverse) */
-    gap: 20px;               /* Spazio tra il menu e il bottone */
+    justify-content: center; 
+    align-items: center;     
+    gap: 20px;               
     margin-bottom: 50px;
-    width: 100%;             /* Occupa tutta la larghezza disponibile */
-    max-width: 600px;        /* Ma non superare la larghezza della card sotto */
-    box-sizing: border-box;  /* Evita che il padding sballi la larghezza */
+    width: 100%;             
+    max-width: 600px;        
 }
 
-/* Un piccolo tocco per rendere il select più largo */
 select {
     background: #000;
     color: #fff;
     border: 1px solid #444;
-    padding: 10px 25px;      /* Più spazio interno */
+    padding: 10px 25px;      
     font-size: 1rem;
     border-radius: 5px;
-    min-width: 150px;        /* Evita che sia troppo piccolo */
+    min-width: 150px;        
     cursor: crosshair;
 }
 
@@ -81,10 +85,9 @@ button {
 
 button:hover {
     background: #ccc;
-    letter-spacing: 3px; /* Effetto espansione al click */
+    letter-spacing: 3px; 
 }
 
-/* Card dell'Outfit */
 #result {
     width: 100%;
     max-width: 600px;
@@ -112,7 +115,6 @@ button:hover {
     text-align: center;
 }
 
-/* Container della lista capi */
 .item-list {
     list-style: none;
     padding: 0;
@@ -123,12 +125,11 @@ button:hover {
     margin-top: 20px;
 }
 
-/* Singolo blocco Capo (Box) */
 .item-box {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid #222;
     border-radius: 15px;
-    padding: 10px; /* Ridotto per far risaltare l'immagine */
+    padding: 10px; 
     width: 100%;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -139,13 +140,12 @@ button:hover {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Stile dell'immagine */
 .item-img {
     width: 100%;
-    height: 400px; /* Fissiamo un'altezza uguale per tutti i box */
-    max-height: 50vh; /* Sui telefoni non supererà mai metà dell'altezza dello schermo */
-    object-fit: contain; /* L'immagine non viene tagliata, si adatta allo spazio */
-    background-color: #111; /* Sfondo scuro per riempire i bordi se l'immagine è stretta */
+    height: 400px; 
+    max-height: 50vh; 
+    object-fit: contain; 
+    background-color: #111; 
     border-radius: 10px;
     margin-bottom: 15px;
     display: block;
@@ -156,7 +156,6 @@ button:hover {
     filter: grayscale(0%);
 }
 
-/* Stile del testo sotto l'immagine */
 .item-info {
     text-align: left;
     padding: 10px 15px;
@@ -170,6 +169,11 @@ button:hover {
     margin-bottom: 5px;
 }
 
+/* Box IA */
+.ai-box {
+    width: 100%;
+}
+
 #aiAdvice {
     margin-top: 40px;
     padding: 20px;
@@ -181,9 +185,10 @@ button:hover {
     line-height: 1.8;
     text-align: center;
     position: relative;
+    white-space: normal;      /* Importante per andare a capo */
+    word-break: break-word;   /* Spezza le parole troppo lunghe */
 }
 
-/* Decorazione finale: virgolette stilizzate per l'IA */
 #aiAdvice::before {
     content: "“";
     font-family: 'Cinzel', serif;
@@ -193,134 +198,140 @@ button:hover {
     left: 10px;
     opacity: 0.2;
 }
+
+/* Mini Player Audio Desktop */
 #mini-player {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 220px;
-  background: rgba(0, 0, 0, 0.85); /* Sfondo scuro semi-trasparente stile streetwear */
-  color: #fff;
-  padding: 12px;
-  border-radius: 8px;
-  font-family: sans-serif;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  z-index: 9999; /* Rimane sopra a qualsiasi altro elemento */
-  border: 1px solid #333;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 220px;
+    background: rgba(0, 0, 0, 0.85); 
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 9999; 
+    border: 1px solid #333;
 }
 
 .player-track-title {
-  font-size: 12px;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; /* Se il titolo è lungo, aggiunge i tre puntini (...) */
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .player-progress-container {
-  width: 100%;
-  height: 5px;
-  background: #333;
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 6px;
+    width: 100%;
+    height: 5px;
+    background: #333;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
 }
 
 .player-progress-bar {
-  width: 0%; /* Parte da zero e si allunga con JavaScript */
-  height: 100%;
-  background: #fff; /* Barra bianca minimale */
-  transition: width 0.1s linear;
+    width: 0%; 
+    height: 100%;
+    background: #fff; 
+    transition: width 0.1s linear;
 }
 
 .player-time {
-  font-size: 10px;
-  color: #aaa;
-  text-align: right;
+    font-size: 10px;
+    color: #aaa;
+    text-align: right;
 }
-/* ==========================================
-   FIX COMPLETO PER SMARTPHONE (RESPONSIVE)
-   ========================================== */
+
+/* ==========================================================================
+   3. STILI PER SMARTPHONE (MEDIA QUERY COMPLETA E CORRETTA)
+   ========================================================================== */
 @media (max-width: 768px) {
     
-    /* Evita che l'intera pagina possa scivolare o fare scroll orizzontale */
     html, body {
-        overflow-x: hidden;
+        overflow-x: hidden; /* Blocca il tremolio orizzontale */
         width: 100%;
-        padding: 15px 10px;
-        box-sizing: border-box;
+        padding: 15px 10px !important;
     }
 
-    /* 1. Sistemiamo il Titolo (Era troppo grande e rompeva tutto) */
+    body {
+        padding-bottom: 110px !important; /* Lascia spazio al player fisso in basso */
+    }
+
     h1 {
-        font-size: 1.8rem !important; /* Forza la dimensione ridotta */
+        font-size: 2rem !important; 
         letter-spacing: 2px;
-        margin-bottom: 20px;
-        width: 100%;
-        text-align: center;
+        margin-bottom: 25px;
     }
 
-    /* 2. Sistemiamo i Controlli (Select + Bottone) */
     .controls {
-        flex-direction: column !important; /* Li mette uno sotto l'altro */
+        flex-direction: column !important; 
         gap: 12px;
-        padding: 15px;
-        margin-left: 0 !important; /* Rimuove tassativamente ogni margine sinistro */
+        padding: 20px 15px;
+        margin-left: 0 !important; 
         width: 100% !important;
         max-width: 100%;
-        box-sizing: border-box;
     }
 
     select, button {
-        width: 100% !important; /* Occupano tutta la larghezza disponibile senza uscire */
-        box-sizing: border-box;
+        width: 100% !important; 
         padding: 12px !important;
         font-size: 1rem;
     }
 
-    /* 3. Sistemiamo la Card del Risultato e del Dio */
     #result {
-        padding: 20px 15px !important;
+        padding: 20px 15px !important; 
         width: 100% !important;
         max-width: 100%;
-        box-sizing: border-box;
         border-radius: 12px;
     }
 
     #godName {
-        font-size: 2rem !important;
+        font-size: 2.2rem !important;
     }
 
-    /* 4. Sistemiamo l'immagine dell'abbigliamento */
     .item-img {
-        height: auto !important; /* Lascia che l'altezza si adatti proporzionalmente */
-        max-height: 350px;       /* Impedisce che diventi gigantesca */
+        height: auto !important; 
+        max-height: 340px !important;       
         width: 100% !important;
-        object-fit: contain;
     }
 
-    /* 5. Sistemiamo il Player in fondo stile Spotify */
+    /* Ottimizzazione testo IA per non rompere i margini */
+    .ai-box {
+        width: 100% !important;
+        overflow: hidden;
+    }
+
+    #aiAdvice {
+        margin-top: 25px;
+        padding: 15px 10px !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+    }
+
+    #aiAdvice::before {
+        font-size: 2rem !important;
+        top: -5px !important;
+        left: 5px !important;
+    }
+
+    /* Player stile Mobile Spotify */
     #mini-player {
         top: auto !important;
         left: 0 !important;
         bottom: 0 !important;
         width: 100% !important;
         border-radius: 0 !important;
-        border-left: none;
-        border-right: none;
-        border-bottom: none;
-        box-sizing: border-box;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: none !important;
         padding: 10px 15px;
-        background: rgba(10, 10, 10, 0.95);
-    }
-
-    /* Spazio extra per non far coprire il testo dal player in fondo */
-    body {
-        padding-bottom: 100px !important;
-    }
-}
-        padding-bottom: 90px; 
+        background: rgba(10, 10, 10, 0.98);
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6);
     }
 }
