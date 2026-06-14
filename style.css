@@ -67,11 +67,7 @@ select {
     border-radius: 5px;
     min-width: 150px;        
     cursor: crosshair;
-    -webkit-appearance: none;  /* Rimuove lo stile di default di Apple/Google */
-    -moz-appearance: none;
-    appearance: none;
-    /* Avendo rimosso la freccetta di default, puoi rimetterne una minimale usando un'immagine di sfondo o lasciarlo così, che fa molto techno-minimal */
-}
+   }
 
 button {
     background: var(--accent);
