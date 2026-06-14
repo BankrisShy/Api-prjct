@@ -241,68 +241,86 @@ button:hover {
   text-align: right;
 }
 /* ==========================================
-   STILI PER DISPOSITIVI MOBILI (SMARTPHONE)
+   FIX COMPLETO PER SMARTPHONE (RESPONSIVE)
    ========================================== */
 @media (max-width: 768px) {
     
-    body {
-        padding: 20px 15px; /* Riduciamo il padding per avere più spazio laterale */
+    /* Evita che l'intera pagina possa scivolare o fare scroll orizzontale */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        padding: 15px 10px;
+        box-sizing: border-box;
     }
 
-    /* Rimpiccioliamo il titolo principale per non farlo andare a capo male */
+    /* 1. Sistemiamo il Titolo (Era troppo grande e rompeva tutto) */
     h1 {
-        font-size: 2.2rem;
+        font-size: 1.8rem !important; /* Forza la dimensione ridotta */
         letter-spacing: 2px;
         margin-bottom: 20px;
+        width: 100%;
+        text-align: center;
     }
 
-    /* I controlli (Select e Bottone) si mettono in verticale per stare comodi */
+    /* 2. Sistemiamo i Controlli (Select + Bottone) */
     .controls {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px;
+        flex-direction: column !important; /* Li mette uno sotto l'altro */
+        gap: 12px;
+        padding: 15px;
+        margin-left: 0 !important; /* Rimuove tassativamente ogni margine sinistro */
+        width: 100% !important;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     select, button {
-        width: 100%; /* Occupano tutta la larghezza del contenitore */
+        width: 100% !important; /* Occupano tutta la larghezza disponibile senza uscire */
         box-sizing: border-box;
-        padding: 12px; /* Più facili da cliccare con le dita */
+        padding: 12px !important;
         font-size: 1rem;
     }
 
-    /* Card del risultato */
+    /* 3. Sistemiamo la Card del Risultato e del Dio */
     #result {
-        padding: 20px; /* Meno spazio interno per lasciare spazio ai contenuti */
-        border-radius: 15px;
+        padding: 20px 15px !important;
+        width: 100% !important;
+        max-width: 100%;
+        box-sizing: border-box;
+        border-radius: 12px;
     }
 
     #godName {
-        font-size: 2.2rem;
+        font-size: 2rem !important;
     }
 
-    #vibe {
-        letter-spacing: 2px;
-        margin-bottom: 20px;
+    /* 4. Sistemiamo l'immagine dell'abbigliamento */
+    .item-img {
+        height: auto !important; /* Lascia che l'altezza si adatti proporzionalmente */
+        max-height: 350px;       /* Impedisce che diventi gigantesca */
+        width: 100% !important;
+        object-fit: contain;
     }
 
-    /* Ottimizzazione del Mini Player per Mobile */
-    /* Lo spostiamo in basso fisso così non copre il titolo del sito */
+    /* 5. Sistemiamo il Player in fondo stile Spotify */
     #mini-player {
-        top: auto;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        border-radius: 0; /* Rimosso l'arrotondamento per farlo combaciare col fondo */
+        top: auto !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        border-radius: 0 !important;
         border-left: none;
         border-right: none;
         border-bottom: none;
         box-sizing: border-box;
-        background: rgba(0, 0, 0, 0.95); /* Leggermente più opaco sul telefono */
-        padding: 10px 20px;
+        padding: 10px 15px;
+        background: rgba(10, 10, 10, 0.95);
     }
-    
-    /* Spazio extra in fondo al body per evitare che il player copra i contenuti finali */
+
+    /* Spazio extra per non far coprire il testo dal player in fondo */
     body {
+        padding-bottom: 100px !important;
+    }
+}
         padding-bottom: 90px; 
     }
 }
