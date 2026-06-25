@@ -71,7 +71,7 @@ async function generateOutfit() {
 
   try {
     // ⚠️ CAMBIATO: Ora punta al server live su Render invece che a localhost
-    const aiResponse = await fetch("https://mythology-fits.onrender.com/generate", {
+     const aiResponse = await fetch("https://mythology-fits.onrender.com/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
